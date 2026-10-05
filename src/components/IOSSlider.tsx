@@ -47,14 +47,12 @@ export const IOSSlider: React.FC<IOSSliderProps> = ({
           />
         </div>
 
-        {/* Custom iOS Thumb */}
+        {/* Custom iOS Thumb - Solid Pure White Circle */}
         <div
           className="pointer-events-none absolute top-1/2 -translate-y-1/2 -translate-x-1/2 transition-transform duration-75"
           style={{ left: `${percentage}%` }}
         >
-          <div className="h-6 w-6 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.45)] border border-black/10 flex items-center justify-center">
-            <div className="h-1.5 w-1.5 rounded-full bg-indigo-500" />
-          </div>
+          <div className="h-6 w-6 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.45)] border border-black/10" />
         </div>
 
         {/* Native Transparent Slider for Touch, Drag & Accessibility */}
