@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { Header } from './components/Header.tsx';
+import { Volume2, VolumeX, History, Home } from 'lucide-react';
 import { ConfigScreen } from './components/ConfigScreen.tsx';
 import { QuizScreen } from './components/QuizScreen.tsx';
 import { ResultScreen } from './components/ResultScreen.tsx';
@@ -150,22 +150,56 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#090D16] text-neutral-100 flex flex-col font-sans selection:bg-indigo-500/30 selection:text-indigo-200">
-      {/* Universal Top Bar */}
-      <Header
-        soundEnabled={config.soundEnabled}
-        onToggleSound={handleToggleSound}
-        onOpenHistory={() => setIsHistoryOpen(true)}
-        onResetToHome={() => {
-          if (viewMode === 'quiz') {
-            if (window.confirm('Möchtest du zur Konfiguration zurückkehren? Der Fortschritt geht verloren.')) {
-              setViewMode('config');
-            }
-          } else {
-            setViewMode('config');
-          }
-        }}
-        gameActive={viewMode === 'quiz'}
-      />
+      {/* Subtle Floating Corner Controls (No Header bar, No logo) */}
+      <div className="fixed top-4 right-4 z-40 flex items-center gap-2">
+        {viewMode !== 'config' && (
+          <button
+            onClick={() => {
+              sound.playClick();
+              if (viewMode === 'quiz') {
+                if (window.confirm('Möchtest du zur Konfiguration zurückkehren? Der Fortschritt geht verloren.')) {
+                  setViewMode('config');
+                }
+              } else {
+                setViewMode('config');
+              }
+            }}
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-[#090D16]/80 text-neutral-300 backdrop-blur-md transition-all hover:border-white/[0.18] hover:text-white active:scale-95 focus-visible:ring-2 focus-visible:ring-indigo-400"
+            title="Zurück zum Start"
+            aria-label="Zurück zum Start"
+          >
+            <Home className="h-4 w-4" />
+          </button>
+        )}
+
+        <button
+          onClick={() => {
+            sound.playClick();
+            setIsHistoryOpen(true);
+          }}
+          className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-[#090D16]/80 text-neutral-300 backdrop-blur-md transition-all hover:border-white/[0.18] hover:text-white active:scale-95 focus-visible:ring-2 focus-visible:ring-indigo-400"
+          title="Verlauf & Highscores"
+          aria-label="Quiz-Verlauf und Highscores ansehen"
+        >
+          <History className="h-4 w-4" />
+        </button>
+
+        <button
+          onClick={() => {
+            sound.playClick();
+            handleToggleSound();
+          }}
+          className={`flex h-10 w-10 items-center justify-center rounded-xl border backdrop-blur-md transition-all active:scale-95 focus-visible:ring-2 focus-visible:ring-indigo-400 ${
+            config.soundEnabled
+              ? 'border-indigo-500/30 bg-indigo-500/10 text-indigo-300 hover:bg-indigo-500/20'
+              : 'border-white/[0.08] bg-[#090D16]/80 text-neutral-500 hover:border-white/[0.18] hover:text-neutral-300'
+          }`}
+          title={config.soundEnabled ? 'Ton stummschalten' : 'Ton aktivieren'}
+          aria-label={config.soundEnabled ? 'Ton stummschalten' : 'Ton aktivieren'}
+        >
+          {config.soundEnabled ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
+        </button>
+      </div>
 
       {/* Main Content Areas */}
       <main className="flex-1 flex flex-col">

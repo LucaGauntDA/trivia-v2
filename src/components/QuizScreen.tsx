@@ -260,13 +260,6 @@ export const QuizScreen: React.FC<QuizScreenProps> = ({
 
       {/* Main Question Display Card */}
       <div className="my-auto py-8 sm:py-12 md:py-14 text-center">
-        {/* Subtle difficulty metadata without pill boxes */}
-        <div className="mb-4 flex items-center justify-center gap-2 text-xs font-medium text-neutral-500 uppercase tracking-widest">
-          <span>Stufe: {currentQuestion.difficulty}</span>
-          <span aria-hidden="true">·</span>
-          <span>{currentQuestion.type === 'boolean' ? 'Wahr/Falsch' : 'Multiple Choice'}</span>
-        </div>
-
         {/* Big Bold Question Typography */}
         <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white leading-snug sm:leading-tight md:leading-tight max-w-2xl mx-auto px-2">
           {currentQuestion.questionText}

@@ -67,12 +67,6 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({
       
       {/* Result Hero Header */}
       <div className="text-center mb-10 md:mb-12">
-        <div className="inline-flex items-center gap-2 mb-3 text-xs font-semibold text-indigo-400 uppercase tracking-widest">
-          <span>{summary.categoryName}</span>
-          <span aria-hidden="true">·</span>
-          <span>Stufe: {summary.config.difficulty}</span>
-        </div>
-
         <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-3">
           {rank.title}
         </h1>
