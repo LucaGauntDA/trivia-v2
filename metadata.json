@@ -1,0 +1,6 @@
+{
+  "name": "Trivia v2",
+  "description": "Moderne, minimalistische Trivia-Quiz-App powered by Open Trivia DB mit individueller Konfiguration, iPad- & Mobile-Optimierung und schnellem Dark Mode UI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
